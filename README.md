@@ -1,8 +1,7 @@
-# ROICli
+# Top-Tech-Stocks- ROI-Tracker
 
-Welcome to your new gem! In this directory, you'll find the files you need to be able to package up your Ruby library into a gem. Put your Ruby code in the file `lib/ROI_cli`. To experiment with that code, run `bin/console` for an interactive prompt.
+Top-Tech-Stocks- ROI-Tracker is a gem that tracks the the one-year-to-prior trading-date return on investment for the top technology stocks on the market. These stocks are selected by market capitalition and provides a good insight as to what a hypothetical historical one year return would look like for investors. 
 
-TODO: Delete this and the text above, and describe your gem
 
 ## Installation
 
@@ -22,17 +21,18 @@ Or install it yourself as:
 
 ## Usage
 
-TODO: Write usage instructions here
+click the link to see a brief description on how to use he program
 
-## Development
 
-After checking out the repo, run `bin/setup` to install dependencies. You can also run `bin/console` for an interactive prompt that will allow you to experiment.
 
-To install this gem onto your local machine, run `bundle exec rake install`. To release a new version, update the version number in `version.rb`, and then run `bundle exec rake release`, which will create a git tag for the version, push git commits and the created tag, and push the `.gem` file to [rubygems.org](https://rubygems.org).
+## Reference 
+
+ API :https://cloud.iexapis.com/
+
 
 ## Contributing
 
-Bug reports and pull requests are welcome on GitHub at https://github.com/[USERNAME]/ROI_cli. This project is intended to be a safe, welcoming space for collaboration, and contributors are expected to adhere to the [code of conduct](https://github.com/[USERNAME]/ROI_cli/blob/master/CODE_OF_CONDUCT.md).
+Bug reports and pull requests are welcome on GitHub at https://github.com/krogersdev/Top-Tech-Stocks---Return-on-Investment-ROI-Tracker-. This project is intended to be a safe, welcoming space for collaboration, and contributors are expected to adhere to the [code of conduct](CODE_OF_CONDUCT.md).
 
 ## License
 
@@ -40,4 +40,4 @@ The gem is available as open source under the terms of the [MIT License](https:/
 
 ## Code of Conduct
 
-Everyone interacting in the ROICli project's codebases, issue trackers, chat rooms and mailing lists is expected to follow the [code of conduct](https://github.com/[USERNAME]/ROI_cli/blob/master/CODE_OF_CONDUCT.md).
+Everyone interacting in the ROICli project's codebases, issue trackers, chat rooms and mailing lists is expected to follow the [code of conduct](https://github.com/krogersdev/Top-Tech-Stocks---Return-on-Investment-ROI-Tracker-/blob/master/CODE_OF_CONDUCT.md).
