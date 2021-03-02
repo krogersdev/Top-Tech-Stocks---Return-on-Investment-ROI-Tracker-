@@ -27,7 +27,7 @@ click the link to see a brief description on how to use he program
 
 ## Reference 
 
- API :https://cloud.iexapis.com/
+ API :https://iexcloud.io/
 
 
 ## Contributing
