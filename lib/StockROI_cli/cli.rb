@@ -1,76 +1,70 @@
-#responsible for communicating between the user and data 
-
-
 class CLI
 
-    #method to behave as entry point to CLI 
     def start 
-        puts "Hello Investor, welcome to the Return on Investment (ROI) calculator"
-        puts ""
-        puts "Have you ever wondered? What if i'd purchased that popular stock a year ago, would i have made a profit or loss .?" 
-        puts ""
-        puts "Our calculator allows you to test this hypothetical for the top technology stocks by Market capitalization "
-        puts ""
-        puts "Type 'y'  and press 'enter' to see these top stocks, or 'exit' to leave the app!"
-        puts "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"
+        puts "Hello Investor, welcome to the Top Tech stock Return on Investment (ROI) Tracker\n\n"
+        puts "Have you ever wondered? What if I'd purchased that popular Tech stock a year ago, would I have made a profit or loss.?\n\n" 
+        puts "Our Tracker allows you to see this hypothetical, when you select one of the top technology stocks in the Market.\n\n"
+        puts "Type 'y'  and press 'enter' to see these Tech stocks, or 'exit' to leave the app!\n\n"
+        puts "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"
+        API.new.get_data
         menu
     end 
 
-    
     def user_input
-        gets.chomp.downcase      #method created to assign user input
-    end 
-  
-
-    def stock_lookup 
-        stock = Stock.select_stock(selection)
-
-         #if  
-
-            # after calling stock_lockup --> options are Exit or another selection 
-         
-               
-        # puts " enter 'y' to try another ticker"
-        menu
-    end 
-    
-    
-    def some_other_time
-        puts "until next time"
+        gets.chomp.downcase
     end 
 
-
-    def invalid_entry
-        puts "Invalid entry. Please try again"
-        menu
-    end
-    
-
-    # def stock_list
-    #     array = 
-
-    # end 
-    
-    
-    def menu      # method gives the options based on user selection
+    def menu   
         selection = user_input
-
         if selection == 'y'
-            puts "Which stock ticker would you like to lookup?."
-            puts ""
-            puts "Type a ticker symbol (e.g. 'AAPL' for Apple Inc) and press 'enter'!"
-            stock_lookup    
-                             
+            stock_list
+            menu
+        elsif selection.to_i < 11 && selection.to_i > 0 && selection =~ [/^\d+$/]
+            stock_details(selection)
+            puts "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"
+            puts "If you would like to see another stock, select the corresponding number  or 'exit' at anytime to leave the app!"
+            menu
         elsif selection == 'exit'
-             some_other_time                  
-        
+            exit_app
         else
             invalid_entry
-        end 
-               
-           
+        end
+    end 
+    
+    def stock_list     #prints list of stocks 
+            puts "Which Tech stock would you like to lookup?."
+            puts ""
+            Stock.all.each.with_index(1) do |stock, i|
+            puts "#{i}. #{stock.companyName}" + "  " +  "(#{stock.symbol})"
+        end
+            puts "Select a number to see the corresponding stock details\n\n"  
+            puts "(e.g. type '2' for Apple Inc  (AAPL) and press 'enter'!\n\n"
     end 
 
-    
+    def stock_details(input)
+            stock = Stock.all[input.to_i-1]
+            percentage = stock.week52change.round(2)
+            lastyearprice = stock.latestPrice / (1+ percentage)
+            puts "Ticker:""(#{stock.symbol})"
+            puts "Company Name:" "#{stock.companyName}"
+            puts "Date:""#{stock.latestTime}"
+            puts "Latest Price:" + "$" "#{stock.latestPrice}"
+            puts "last year's Price:" + "$" "#{lastyearprice.round(2)}"
+            puts "One-year-to-date percentage change:" +  "#{percentage.*100}%" 
+            percentage > 0.01 ? (puts"you would have made a profit!") :(puts "you would have made a loss!")  
+    end 
 
-end 
+    def exit_app
+            puts "Until next time"
+            exit
+    end 
+
+    def invalid_entry
+            puts "Invalid entry. Type 'y' to continue or 'exit' to quit!"
+        menu 
+    end
+end   
+
+       
+    
+    

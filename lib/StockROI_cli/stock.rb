@@ -1,34 +1,24 @@
-#what do you want your object model to look like 
-
 class Stock
 
-    @@all = []  # here i'm keeping track of my instances 
+    @@all = []  
 
-    attr_accessor :symbol, :companyName, :close, :week52change
+    attr_reader :symbol, :companyName, :latestPrice, :week52change, :latestTime
 
-    def initilize(symbol, companyName, close, week52change)  # when i create my object instances i want them to have the attributes passed in arg
-        @symbol = symbol       
-        @companyName = companyName
-        @close = close
-        @week52change = week52change #stock price 1 year ago
+    def initialize(stockobj)  
+        @symbol = stockobj[0]
+        @companyName = stockobj[1].dig("stats","companyName")
+        @latestPrice = stockobj[1].dig("quote","latestPrice")   
+        @week52change = stockobj[1].dig("stats","week52change")
+        @latestTime = stockobj[1].dig("quote","latestTime")
         save
     end
-
-
+        
     def save 
         @@all << self
     end 
-
-
-    def self.all   # this method is used to read the array 
+        
+    def self.all   
         @@all
     end
-
-
-    def self.select_stock(ticker_symbol)  #selects the array for matching ticker 
-        self.all.find do |stock|
-         stock.symbol == ticker_symbol  
-        end
-    end 
 
 end 

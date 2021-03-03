@@ -22,13 +22,12 @@ Or install it yourself as:
 ## Usage
 
 click the link to see a brief description on how to use he program
-https://drive.google.com/file/d/1vaMy7xFI8L_S_CjBvQZM6eU8Rdnh331y/view
 
 
 
 ## Reference 
 
- API :https://iexcloud.io/
+ API :https://drive.google.com/file/d/1vaMy7xFI8L_S_CjBvQZM6eU8Rdnh331y/view
 
 
 ## Contributing
