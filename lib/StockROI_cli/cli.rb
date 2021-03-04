@@ -16,10 +16,10 @@ class CLI
 
     def menu   
         selection = user_input
-        if selection == 'y'
+        if selection == 'y' 
             stock_list
             menu
-        elsif selection.to_i < 11 && selection.to_i > 0 && selection =~ [/^\d+$/]
+        elsif selection.to_i < 11 && selection.to_i > 0 
             stock_details(selection)
             puts "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"
             puts "If you would like to see another stock, select the corresponding number  or 'exit' at anytime to leave the app!"
@@ -31,7 +31,7 @@ class CLI
         end
     end 
     
-    def stock_list     #prints list of stocks 
+    def stock_list                                          #prints list of stocks 
             puts "Which Tech stock would you like to lookup?."
             puts ""
             Stock.all.each.with_index(1) do |stock, i|
@@ -39,6 +39,7 @@ class CLI
         end
             puts "Select a number to see the corresponding stock details\n\n"  
             puts "(e.g. type '2' for Apple Inc  (AAPL) and press 'enter'!\n\n"
+           
     end 
 
     def stock_details(input)

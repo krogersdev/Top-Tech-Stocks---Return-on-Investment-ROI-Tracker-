@@ -22,3 +22,4 @@ class Stock
     end
 
 end 
+
